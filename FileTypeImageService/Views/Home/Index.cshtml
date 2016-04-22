@@ -1,0 +1,24 @@
+﻿@using FileTypeImageService.Controllers
+@{
+    ViewBag.Title = "Home Page";
+    List<String> filetypes = ViewBag.SupportedFiles;
+}
+
+<div class="jumbotron">
+    <h1>EZ Icons </h1> <img class="banner-image" alt="mp4 Icon" src="@Url.Content("~/Content/png/mp4.png")" /> <img class="banner-image" alt="exe Icon" src="@Url.Content("~/Content/png/exe.png")" /> 
+    <img class="banner-image" alt="dll Icon" src="@Url.Content("~/Content/png/dll.png")" />
+    <p class="lead">Use this site as a service to get icons for all filetypes. You can even specify what kind of file you want</p>
+    <ol>
+        <li>Use the "extension" URL param to choose your file</li>
+        <li>You can also use the "imageType" URL param for the type of file returned to you</li>
+    </ol>
+    <p>Supported filetypes:</p>
+    <ul>
+       
+        @foreach (var type in filetypes)
+        {
+            <li>@type</li>
+        }
+        
+    </ul>
+</div>

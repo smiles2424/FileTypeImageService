@@ -1,0 +1,934 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{02626A5C-7CD5-4D32-9388-9292F0BE5357}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FileTypeImageService</RootNamespace>
+    <AssemblyName>FileTypeImageService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\png\3dm.png" />
+    <Content Include="Content\png\3ds2.png" />
+    <Content Include="Content\png\3g22.png" />
+    <Content Include="Content\png\3gp2.png" />
+    <Content Include="Content\png\7z1.png" />
+    <Content Include="Content\png\aac.png" />
+    <Content Include="Content\png\ai.png" />
+    <Content Include="Content\png\aif.png" />
+    <Content Include="Content\png\apk.png" />
+    <Content Include="Content\png\app6.png" />
+    <Content Include="Content\png\asf1.png" />
+    <Content Include="Content\png\asp.png" />
+    <Content Include="Content\png\aspx.png" />
+    <Content Include="Content\png\asx2.png" />
+    <Content Include="Content\png\avi4.png" />
+    <Content Include="Content\png\bak.png" />
+    <Content Include="Content\png\bat8.png" />
+    <Content Include="Content\png\bin6.png" />
+    <Content Include="Content\png\bmp2.png" />
+    <Content Include="Content\png\cab.png" />
+    <Content Include="Content\png\cad1.png" />
+    <Content Include="Content\png\cdr2.png" />
+    <Content Include="Content\png\cer.png" />
+    <Content Include="Content\png\cfg2.png" />
+    <Content Include="Content\png\cfm2.png" />
+    <Content Include="Content\png\cgi2.png" />
+    <Content Include="Content\png\class3.png" />
+    <Content Include="Content\png\com.png" />
+    <Content Include="Content\png\cpl2.png" />
+    <Content Include="Content\png\cpp1.png" />
+    <Content Include="Content\png\crx.png" />
+    <Content Include="Content\png\csr.png" />
+    <Content Include="Content\png\css5.png" />
+    <Content Include="Content\png\csv2.png" />
+    <Content Include="Content\png\cue2.png" />
+    <Content Include="Content\png\cur1.png" />
+    <Content Include="Content\png\dat2.png" />
+    <Content Include="Content\png\db2.png" />
+    <Content Include="Content\png\dbf2.png" />
+    <Content Include="Content\png\dds2.png" />
+    <Content Include="Content\png\dem2.png" />
+    <Content Include="Content\png\dll2.png" />
+    <Content Include="Content\png\dmg3.png" />
+    <Content Include="Content\png\dmp2.png" />
+    <Content Include="Content\png\doc2.png" />
+    <Content Include="Content\png\docx.png" />
+    <Content Include="Content\png\drv1.png" />
+    <Content Include="Content\png\dtd2.png" />
+    <Content Include="Content\png\dwg2.png" />
+    <Content Include="Content\png\dxf1.png" />
+    <Content Include="Content\png\elf2.png" />
+    <Content Include="Content\png\eps2.png" />
+    <Content Include="Content\png\eps5.png" />
+    <Content Include="Content\png\exe3.png" />
+    <Content Include="Content\png\fla2.png" />
+    <Content Include="Content\png\flash10.png" />
+    <Content Include="Content\png\flv.png" />
+    <Content Include="Content\png\fnt.png" />
+    <Content Include="Content\png\fon1.png" />
+    <Content Include="Content\png\gam2.png" />
+    <Content Include="Content\png\gbr1.png" />
+    <Content Include="Content\png\ged2.png" />
+    <Content Include="Content\png\gif3.png" />
+    <Content Include="Content\png\gpx1.png" />
+    <Content Include="Content\png\gz.png" />
+    <Content Include="Content\png\gzip2.png" />
+    <Content Include="Content\png\hqz.png" />
+    <Content Include="Content\png\html9.png" />
+    <Content Include="Content\png\ibooks1.png" />
+    <Content Include="Content\png\icns.png" />
+    <Content Include="Content\png\ico2.png" />
+    <Content Include="Content\png\ics2.png" />
+    <Content Include="Content\png\iff.png" />
+    <Content Include="Content\png\indd2.png" />
+    <Content Include="Content\png\iso1.png" />
+    <Content Include="Content\png\iso4.png" />
+    <Content Include="Content\png\jar8.png" />
+    <Content Include="Content\png\jpg3.png" />
+    <Content Include="Content\png\js2.png" />
+    <Content Include="Content\png\jsp2.png" />
+    <Content Include="Content\png\key35.png" />
+    <Content Include="Content\png\kml1.png" />
+    <Content Include="Content\png\kmz.png" />
+    <Content Include="Content\png\lnk2.png" />
+    <Content Include="Content\png\log2.png" />
+    <Content Include="Content\png\lua.png" />
+    <Content Include="Content\png\m3u.png" />
+    <Content Include="Content\png\m4a1.png" />
+    <Content Include="Content\png\m4v2.png" />
+    <Content Include="Content\png\macho.png" />
+    <Content Include="Content\png\max2.png" />
+    <Content Include="Content\png\mdb2.png" />
+    <Content Include="Content\png\mdf2.png" />
+    <Content Include="Content\png\mid.png" />
+    <Content Include="Content\png\mim.png" />
+    <Content Include="Content\png\mov2.png" />
+    <Content Include="Content\png\mp36.png" />
+    <Content Include="Content\png\mp4.png" />
+    <Content Include="Content\png\mpa.png" />
+    <Content Include="Content\png\mpg3.png" />
+    <Content Include="Content\png\msg2.png" />
+    <Content Include="Content\png\msi2.png" />
+    <Content Include="Content\png\nes1.png" />
+    <Content Include="Content\png\object4.png" />
+    <Content Include="Content\png\odb2.png" />
+    <Content Include="Content\png\odc2.png" />
+    <Content Include="Content\png\odf2.png" />
+    <Content Include="Content\png\odg.png" />
+    <Content Include="Content\png\odi2.png" />
+    <Content Include="Content\png\odp2.png" />
+    <Content Include="Content\png\ods2.png" />
+    <Content Include="Content\png\odt.png" />
+    <Content Include="Content\png\odt5.png" />
+    <Content Include="Content\png\odx.png" />
+    <Content Include="Content\png\ogg.png" />
+    <Content Include="Content\png\otf.png" />
+    <Content Include="Content\png\otf1.png" />
+    <Content Include="Content\png\pages4.png" />
+    <Content Include="Content\png\pct2.png" />
+    <Content Include="Content\png\pdb2.png" />
+    <Content Include="Content\png\pdf19.png" />
+    <Content Include="Content\png\pif2.png" />
+    <Content Include="Content\png\pkg2.png" />
+    <Content Include="Content\png\pl2.png" />
+    <Content Include="Content\png\png3.png" />
+    <Content Include="Content\png\pps2.png" />
+    <Content Include="Content\png\ppt.png" />
+    <Content Include="Content\png\pptx2.png" />
+    <Content Include="Content\png\ps.png" />
+    <Content Include="Content\png\psd3.png" />
+    <Content Include="Content\png\pub2.png" />
+    <Content Include="Content\png\python3.png" />
+    <Content Include="Content\png\ra.png" />
+    <Content Include="Content\png\rar2.png" />
+    <Content Include="Content\png\raw2.png" />
+    <Content Include="Content\png\rm.png" />
+    <Content Include="Content\png\rom2.png" />
+    <Content Include="Content\png\rpm2.png" />
+    <Content Include="Content\png\rss29.png" />
+    <Content Include="Content\png\rtf.png" />
+    <Content Include="Content\png\sav.png" />
+    <Content Include="Content\png\sdf.png" />
+    <Content Include="Content\png\sitx2.png" />
+    <Content Include="Content\png\sql3.png" />
+    <Content Include="Content\png\sql5.png" />
+    <Content Include="Content\png\srt.png" />
+    <Content Include="Content\png\svg1.png" />
+    <Content Include="Content\png\swf1.png" />
+    <Content Include="Content\png\sys.png" />
+    <Content Include="Content\png\tar1.png" />
+    <Content Include="Content\png\tex.png" />
+    <Content Include="Content\png\tga2.png" />
+    <Content Include="Content\png\thm1.png" />
+    <Content Include="Content\png\tiff1.png" />
+    <Content Include="Content\png\tmp.png" />
+    <Content Include="Content\png\torrent.png" />
+    <Content Include="Content\png\ttf2.png" />
+    <Content Include="Content\png\txt2.png" />
+    <Content Include="Content\png\uue2.png" />
+    <Content Include="Content\png\vb.png" />
+    <Content Include="Content\png\vcd2.png" />
+    <Content Include="Content\png\vcf2.png" />
+    <Content Include="Content\png\vob.png" />
+    <Content Include="Content\png\wav2.png" />
+    <Content Include="Content\png\wma1.png" />
+    <Content Include="Content\png\wmv2.png" />
+    <Content Include="Content\png\wpd2.png" />
+    <Content Include="Content\png\wps.png" />
+    <Content Include="Content\png\wsf2.png" />
+    <Content Include="Content\png\xhtml.png" />
+    <Content Include="Content\png\xlr2.png" />
+    <Content Include="Content\png\xls1.png" />
+    <Content Include="Content\png\xlsx.png" />
+    <Content Include="Content\png\xml5.png" />
+    <Content Include="Content\png\yuv2.png" />
+    <Content Include="Content\png\zip6.png" />
+    <Content Include="Content\svg\3dm.svg" />
+    <Content Include="Content\svg\3ds2.svg" />
+    <Content Include="Content\svg\3g22.svg" />
+    <Content Include="Content\svg\3gp2.svg" />
+    <Content Include="Content\svg\7z1.svg" />
+    <Content Include="Content\svg\aac.svg" />
+    <Content Include="Content\svg\ai.svg" />
+    <Content Include="Content\svg\aif.svg" />
+    <Content Include="Content\svg\apk.svg" />
+    <Content Include="Content\svg\app6.svg" />
+    <Content Include="Content\svg\asf1.svg" />
+    <Content Include="Content\svg\asp.svg" />
+    <Content Include="Content\svg\aspx.svg" />
+    <Content Include="Content\svg\asx2.svg" />
+    <Content Include="Content\svg\avi4.svg" />
+    <Content Include="Content\svg\bak.svg" />
+    <Content Include="Content\svg\bat8.svg" />
+    <Content Include="Content\svg\bin6.svg" />
+    <Content Include="Content\svg\bmp2.svg" />
+    <Content Include="Content\svg\cab.svg" />
+    <Content Include="Content\svg\cad1.svg" />
+    <Content Include="Content\svg\cdr2.svg" />
+    <Content Include="Content\svg\cer.svg" />
+    <Content Include="Content\svg\cfg2.svg" />
+    <Content Include="Content\svg\cfm2.svg" />
+    <Content Include="Content\svg\cgi2.svg" />
+    <Content Include="Content\svg\class3.svg" />
+    <Content Include="Content\svg\com.svg" />
+    <Content Include="Content\svg\cpl2.svg" />
+    <Content Include="Content\svg\cpp1.svg" />
+    <Content Include="Content\svg\crx.svg" />
+    <Content Include="Content\svg\csr.svg" />
+    <Content Include="Content\svg\css5.svg" />
+    <Content Include="Content\svg\csv2.svg" />
+    <Content Include="Content\svg\cue2.svg" />
+    <Content Include="Content\svg\cur1.svg" />
+    <Content Include="Content\svg\dat2.svg" />
+    <Content Include="Content\svg\db2.svg" />
+    <Content Include="Content\svg\dbf2.svg" />
+    <Content Include="Content\svg\dds2.svg" />
+    <Content Include="Content\svg\dem2.svg" />
+    <Content Include="Content\svg\dll2.svg" />
+    <Content Include="Content\svg\dmg3.svg" />
+    <Content Include="Content\svg\dmp2.svg" />
+    <Content Include="Content\svg\doc2.svg" />
+    <Content Include="Content\svg\docx.svg" />
+    <Content Include="Content\svg\drv1.svg" />
+    <Content Include="Content\svg\dtd2.svg" />
+    <Content Include="Content\svg\dwg2.svg" />
+    <Content Include="Content\svg\dxf1.svg" />
+    <Content Include="Content\svg\elf2.svg" />
+    <Content Include="Content\svg\eps2.svg" />
+    <Content Include="Content\svg\eps5.svg" />
+    <Content Include="Content\svg\exe3.svg" />
+    <Content Include="Content\svg\fla2.svg" />
+    <Content Include="Content\svg\flash10.svg" />
+    <Content Include="Content\svg\flv.svg" />
+    <Content Include="Content\svg\fnt.svg" />
+    <Content Include="Content\svg\fon1.svg" />
+    <Content Include="Content\svg\gam2.svg" />
+    <Content Include="Content\svg\gbr1.svg" />
+    <Content Include="Content\svg\ged2.svg" />
+    <Content Include="Content\svg\gif3.svg" />
+    <Content Include="Content\svg\gpx1.svg" />
+    <Content Include="Content\svg\gz.svg" />
+    <Content Include="Content\svg\gzip2.svg" />
+    <Content Include="Content\svg\hqz.svg" />
+    <Content Include="Content\svg\html9.svg" />
+    <Content Include="Content\svg\ibooks1.svg" />
+    <Content Include="Content\svg\icns.svg" />
+    <Content Include="Content\svg\ico2.svg" />
+    <Content Include="Content\svg\ics2.svg" />
+    <Content Include="Content\svg\iff.svg" />
+    <Content Include="Content\svg\indd2.svg" />
+    <Content Include="Content\svg\iso1.svg" />
+    <Content Include="Content\svg\iso4.svg" />
+    <Content Include="Content\svg\jar8.svg" />
+    <Content Include="Content\svg\jpg3.svg" />
+    <Content Include="Content\svg\js2.svg" />
+    <Content Include="Content\svg\jsp2.svg" />
+    <Content Include="Content\svg\key35.svg" />
+    <Content Include="Content\svg\kml1.svg" />
+    <Content Include="Content\svg\kmz.svg" />
+    <Content Include="Content\svg\lnk2.svg" />
+    <Content Include="Content\svg\log2.svg" />
+    <Content Include="Content\svg\lua.svg" />
+    <Content Include="Content\svg\m3u.svg" />
+    <Content Include="Content\svg\m4a1.svg" />
+    <Content Include="Content\svg\m4v2.svg" />
+    <Content Include="Content\svg\macho.svg" />
+    <Content Include="Content\svg\max2.svg" />
+    <Content Include="Content\svg\mdb2.svg" />
+    <Content Include="Content\svg\mdf2.svg" />
+    <Content Include="Content\svg\mid.svg" />
+    <Content Include="Content\svg\mim.svg" />
+    <Content Include="Content\svg\mov2.svg" />
+    <Content Include="Content\svg\mp36.svg" />
+    <Content Include="Content\svg\mp4.svg" />
+    <Content Include="Content\svg\mpa.svg" />
+    <Content Include="Content\svg\mpg3.svg" />
+    <Content Include="Content\svg\msg2.svg" />
+    <Content Include="Content\svg\msi2.svg" />
+    <Content Include="Content\svg\nes1.svg" />
+    <Content Include="Content\svg\object4.svg" />
+    <Content Include="Content\svg\odb2.svg" />
+    <Content Include="Content\svg\odc2.svg" />
+    <Content Include="Content\svg\odf2.svg" />
+    <Content Include="Content\svg\odg.svg" />
+    <Content Include="Content\svg\odi2.svg" />
+    <Content Include="Content\svg\odp2.svg" />
+    <Content Include="Content\svg\ods2.svg" />
+    <Content Include="Content\svg\odt.svg" />
+    <Content Include="Content\svg\odt5.svg" />
+    <Content Include="Content\svg\odx.svg" />
+    <Content Include="Content\svg\ogg.svg" />
+    <Content Include="Content\svg\otf.svg" />
+    <Content Include="Content\svg\otf1.svg" />
+    <Content Include="Content\svg\pages4.svg" />
+    <Content Include="Content\svg\pct2.svg" />
+    <Content Include="Content\svg\pdb2.svg" />
+    <Content Include="Content\svg\pdf19.svg" />
+    <Content Include="Content\svg\pif2.svg" />
+    <Content Include="Content\svg\pkg2.svg" />
+    <Content Include="Content\svg\pl2.svg" />
+    <Content Include="Content\svg\png3.svg" />
+    <Content Include="Content\svg\pps2.svg" />
+    <Content Include="Content\svg\ppt.svg" />
+    <Content Include="Content\svg\pptx2.svg" />
+    <Content Include="Content\svg\ps.svg" />
+    <Content Include="Content\svg\psd3.svg" />
+    <Content Include="Content\svg\pub2.svg" />
+    <Content Include="Content\svg\python3.svg" />
+    <Content Include="Content\svg\ra.svg" />
+    <Content Include="Content\svg\rar2.svg" />
+    <Content Include="Content\svg\raw2.svg" />
+    <Content Include="Content\svg\rm.svg" />
+    <Content Include="Content\svg\rom2.svg" />
+    <Content Include="Content\svg\rpm2.svg" />
+    <Content Include="Content\svg\rss29.svg" />
+    <Content Include="Content\svg\rtf.svg" />
+    <Content Include="Content\svg\sav.svg" />
+    <Content Include="Content\svg\sdf.svg" />
+    <Content Include="Content\svg\sitx2.svg" />
+    <Content Include="Content\svg\sql3.svg" />
+    <Content Include="Content\svg\sql5.svg" />
+    <Content Include="Content\svg\srt.svg" />
+    <Content Include="Content\svg\svg1.svg" />
+    <Content Include="Content\svg\swf1.svg" />
+    <Content Include="Content\svg\sys.svg" />
+    <Content Include="Content\svg\tar1.svg" />
+    <Content Include="Content\svg\tex.svg" />
+    <Content Include="Content\svg\tga2.svg" />
+    <Content Include="Content\svg\thm1.svg" />
+    <Content Include="Content\svg\tiff1.svg" />
+    <Content Include="Content\svg\tmp.svg" />
+    <Content Include="Content\svg\torrent.svg" />
+    <Content Include="Content\svg\ttf2.svg" />
+    <Content Include="Content\svg\txt2.svg" />
+    <Content Include="Content\svg\uue2.svg" />
+    <Content Include="Content\svg\vb.svg" />
+    <Content Include="Content\svg\vcd2.svg" />
+    <Content Include="Content\svg\vcf2.svg" />
+    <Content Include="Content\svg\vob.svg" />
+    <Content Include="Content\svg\wav2.svg" />
+    <Content Include="Content\svg\wma1.svg" />
+    <Content Include="Content\svg\wmv2.svg" />
+    <Content Include="Content\svg\wpd2.svg" />
+    <Content Include="Content\svg\wps.svg" />
+    <Content Include="Content\svg\wsf2.svg" />
+    <Content Include="Content\svg\xhtml.svg" />
+    <Content Include="Content\svg\xlr2.svg" />
+    <Content Include="Content\svg\xls1.svg" />
+    <Content Include="Content\svg\xlsx.svg" />
+    <Content Include="Content\svg\xml5.svg" />
+    <Content Include="Content\svg\yuv2.svg" />
+    <Content Include="Content\svg\zip6.svg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\eps\3dm.eps" />
+    <Content Include="Content\eps\3ds2.eps" />
+    <Content Include="Content\eps\3g22.eps" />
+    <Content Include="Content\eps\3gp2.eps" />
+    <Content Include="Content\eps\7z1.eps" />
+    <Content Include="Content\eps\aac.eps" />
+    <Content Include="Content\eps\ai.eps" />
+    <Content Include="Content\eps\aif.eps" />
+    <Content Include="Content\eps\apk.eps" />
+    <Content Include="Content\eps\app6.eps" />
+    <Content Include="Content\eps\asf1.eps" />
+    <Content Include="Content\eps\asp.eps" />
+    <Content Include="Content\eps\aspx.eps" />
+    <Content Include="Content\eps\asx2.eps" />
+    <Content Include="Content\eps\avi4.eps" />
+    <Content Include="Content\eps\bak.eps" />
+    <Content Include="Content\eps\bat8.eps" />
+    <Content Include="Content\eps\bin6.eps" />
+    <Content Include="Content\eps\bmp2.eps" />
+    <Content Include="Content\eps\cab.eps" />
+    <Content Include="Content\eps\cad1.eps" />
+    <Content Include="Content\eps\cdr2.eps" />
+    <Content Include="Content\eps\cer.eps" />
+    <Content Include="Content\eps\cfg2.eps" />
+    <Content Include="Content\eps\cfm2.eps" />
+    <Content Include="Content\eps\cgi2.eps" />
+    <Content Include="Content\eps\class3.eps" />
+    <Content Include="Content\eps\com.eps" />
+    <Content Include="Content\eps\cpl2.eps" />
+    <Content Include="Content\eps\cpp1.eps" />
+    <Content Include="Content\eps\crx.eps" />
+    <Content Include="Content\eps\csr.eps" />
+    <Content Include="Content\eps\css5.eps" />
+    <Content Include="Content\eps\csv2.eps" />
+    <Content Include="Content\eps\cue2.eps" />
+    <Content Include="Content\eps\cur1.eps" />
+    <Content Include="Content\eps\dat2.eps" />
+    <Content Include="Content\eps\db2.eps" />
+    <Content Include="Content\eps\dbf2.eps" />
+    <Content Include="Content\eps\dds2.eps" />
+    <Content Include="Content\eps\dem2.eps" />
+    <Content Include="Content\eps\dll2.eps" />
+    <Content Include="Content\eps\dmg3.eps" />
+    <Content Include="Content\eps\dmp2.eps" />
+    <Content Include="Content\eps\doc2.eps" />
+    <Content Include="Content\eps\docx.eps" />
+    <Content Include="Content\eps\drv1.eps" />
+    <Content Include="Content\eps\dtd2.eps" />
+    <Content Include="Content\eps\dwg2.eps" />
+    <Content Include="Content\eps\dxf1.eps" />
+    <Content Include="Content\eps\elf2.eps" />
+    <Content Include="Content\eps\eps2.eps" />
+    <Content Include="Content\eps\eps5.eps" />
+    <Content Include="Content\eps\exe3.eps" />
+    <Content Include="Content\eps\fla2.eps" />
+    <Content Include="Content\eps\flash10.eps" />
+    <Content Include="Content\eps\flv.eps" />
+    <Content Include="Content\eps\fnt.eps" />
+    <Content Include="Content\eps\fon1.eps" />
+    <Content Include="Content\eps\gam2.eps" />
+    <Content Include="Content\eps\gbr1.eps" />
+    <Content Include="Content\eps\ged2.eps" />
+    <Content Include="Content\eps\gif3.eps" />
+    <Content Include="Content\eps\gpx1.eps" />
+    <Content Include="Content\eps\gz.eps" />
+    <Content Include="Content\eps\gzip2.eps" />
+    <Content Include="Content\eps\hqz.eps" />
+    <Content Include="Content\eps\html9.eps" />
+    <Content Include="Content\eps\ibooks1.eps" />
+    <Content Include="Content\eps\icns.eps" />
+    <Content Include="Content\eps\ico2.eps" />
+    <Content Include="Content\eps\ics2.eps" />
+    <Content Include="Content\eps\iff.eps" />
+    <Content Include="Content\eps\indd2.eps" />
+    <Content Include="Content\eps\iso1.eps" />
+    <Content Include="Content\eps\iso4.eps" />
+    <Content Include="Content\eps\jar8.eps" />
+    <Content Include="Content\eps\jpg3.eps" />
+    <Content Include="Content\eps\js2.eps" />
+    <Content Include="Content\eps\jsp2.eps" />
+    <Content Include="Content\eps\key35.eps" />
+    <Content Include="Content\eps\kml1.eps" />
+    <Content Include="Content\eps\kmz.eps" />
+    <Content Include="Content\eps\lnk2.eps" />
+    <Content Include="Content\eps\log2.eps" />
+    <Content Include="Content\eps\lua.eps" />
+    <Content Include="Content\eps\m3u.eps" />
+    <Content Include="Content\eps\m4a1.eps" />
+    <Content Include="Content\eps\m4v2.eps" />
+    <Content Include="Content\eps\macho.eps" />
+    <Content Include="Content\eps\max2.eps" />
+    <Content Include="Content\eps\mdb2.eps" />
+    <Content Include="Content\eps\mdf2.eps" />
+    <Content Include="Content\eps\mid.eps" />
+    <Content Include="Content\eps\mim.eps" />
+    <Content Include="Content\eps\mov2.eps" />
+    <Content Include="Content\eps\mp36.eps" />
+    <Content Include="Content\eps\mp4.eps" />
+    <Content Include="Content\eps\mpa.eps" />
+    <Content Include="Content\eps\mpg3.eps" />
+    <Content Include="Content\eps\msg2.eps" />
+    <Content Include="Content\eps\msi2.eps" />
+    <Content Include="Content\eps\nes1.eps" />
+    <Content Include="Content\eps\object4.eps" />
+    <Content Include="Content\eps\odb2.eps" />
+    <Content Include="Content\eps\odc2.eps" />
+    <Content Include="Content\eps\odf2.eps" />
+    <Content Include="Content\eps\odg.eps" />
+    <Content Include="Content\eps\odi2.eps" />
+    <Content Include="Content\eps\odp2.eps" />
+    <Content Include="Content\eps\ods2.eps" />
+    <Content Include="Content\eps\odt.eps" />
+    <Content Include="Content\eps\odt5.eps" />
+    <Content Include="Content\eps\odx.eps" />
+    <Content Include="Content\eps\ogg.eps" />
+    <Content Include="Content\eps\otf.eps" />
+    <Content Include="Content\eps\otf1.eps" />
+    <Content Include="Content\eps\pages4.eps" />
+    <Content Include="Content\eps\pct2.eps" />
+    <Content Include="Content\eps\pdb2.eps" />
+    <Content Include="Content\eps\pdf19.eps" />
+    <Content Include="Content\eps\pif2.eps" />
+    <Content Include="Content\eps\pkg2.eps" />
+    <Content Include="Content\eps\pl2.eps" />
+    <Content Include="Content\eps\png3.eps" />
+    <Content Include="Content\eps\pps2.eps" />
+    <Content Include="Content\eps\ppt.eps" />
+    <Content Include="Content\eps\pptx2.eps" />
+    <Content Include="Content\eps\ps.eps" />
+    <Content Include="Content\eps\psd3.eps" />
+    <Content Include="Content\eps\pub2.eps" />
+    <Content Include="Content\eps\python3.eps" />
+    <Content Include="Content\eps\ra.eps" />
+    <Content Include="Content\eps\rar2.eps" />
+    <Content Include="Content\eps\raw2.eps" />
+    <Content Include="Content\eps\rm.eps" />
+    <Content Include="Content\eps\rom2.eps" />
+    <Content Include="Content\eps\rpm2.eps" />
+    <Content Include="Content\eps\rss29.eps" />
+    <Content Include="Content\eps\rtf.eps" />
+    <Content Include="Content\eps\sav.eps" />
+    <Content Include="Content\eps\sdf.eps" />
+    <Content Include="Content\eps\sitx2.eps" />
+    <Content Include="Content\eps\sql3.eps" />
+    <Content Include="Content\eps\sql5.eps" />
+    <Content Include="Content\eps\srt.eps" />
+    <Content Include="Content\eps\svg1.eps" />
+    <Content Include="Content\eps\swf1.eps" />
+    <Content Include="Content\eps\sys.eps" />
+    <Content Include="Content\eps\tar1.eps" />
+    <Content Include="Content\eps\tex.eps" />
+    <Content Include="Content\eps\tga2.eps" />
+    <Content Include="Content\eps\thm1.eps" />
+    <Content Include="Content\eps\tiff1.eps" />
+    <Content Include="Content\eps\tmp.eps" />
+    <Content Include="Content\eps\torrent.eps" />
+    <Content Include="Content\eps\ttf2.eps" />
+    <Content Include="Content\eps\txt2.eps" />
+    <Content Include="Content\eps\uue2.eps" />
+    <Content Include="Content\eps\vb.eps" />
+    <Content Include="Content\eps\vcd2.eps" />
+    <Content Include="Content\eps\vcf2.eps" />
+    <Content Include="Content\eps\vob.eps" />
+    <Content Include="Content\eps\wav2.eps" />
+    <Content Include="Content\eps\wma1.eps" />
+    <Content Include="Content\eps\wmv2.eps" />
+    <Content Include="Content\eps\wpd2.eps" />
+    <Content Include="Content\eps\wps.eps" />
+    <Content Include="Content\eps\wsf2.eps" />
+    <Content Include="Content\eps\xhtml.eps" />
+    <Content Include="Content\eps\xlr2.eps" />
+    <Content Include="Content\eps\xls1.eps" />
+    <Content Include="Content\eps\xlsx.eps" />
+    <Content Include="Content\eps\xml5.eps" />
+    <Content Include="Content\eps\yuv2.eps" />
+    <Content Include="Content\eps\zip6.eps" />
+    <Content Include="Content\psd\3dm.psd" />
+    <Content Include="Content\psd\3ds2.psd" />
+    <Content Include="Content\psd\3g22.psd" />
+    <Content Include="Content\psd\3gp2.psd" />
+    <Content Include="Content\psd\7z1.psd" />
+    <Content Include="Content\psd\aac.psd" />
+    <Content Include="Content\psd\ai.psd" />
+    <Content Include="Content\psd\aif.psd" />
+    <Content Include="Content\psd\apk.psd" />
+    <Content Include="Content\psd\app6.psd" />
+    <Content Include="Content\psd\asf1.psd" />
+    <Content Include="Content\psd\asp.psd" />
+    <Content Include="Content\psd\aspx.psd" />
+    <Content Include="Content\psd\asx2.psd" />
+    <Content Include="Content\psd\avi4.psd" />
+    <Content Include="Content\psd\bak.psd" />
+    <Content Include="Content\psd\bat8.psd" />
+    <Content Include="Content\psd\bin6.psd" />
+    <Content Include="Content\psd\bmp2.psd" />
+    <Content Include="Content\psd\cab.psd" />
+    <Content Include="Content\psd\cad1.psd" />
+    <Content Include="Content\psd\cdr2.psd" />
+    <Content Include="Content\psd\cer.psd" />
+    <Content Include="Content\psd\cfg2.psd" />
+    <Content Include="Content\psd\cfm2.psd" />
+    <Content Include="Content\psd\cgi2.psd" />
+    <Content Include="Content\psd\class3.psd" />
+    <Content Include="Content\psd\com.psd" />
+    <Content Include="Content\psd\cpl2.psd" />
+    <Content Include="Content\psd\cpp1.psd" />
+    <Content Include="Content\psd\crx.psd" />
+    <Content Include="Content\psd\csr.psd" />
+    <Content Include="Content\psd\css5.psd" />
+    <Content Include="Content\psd\csv2.psd" />
+    <Content Include="Content\psd\cue2.psd" />
+    <Content Include="Content\psd\cur1.psd" />
+    <Content Include="Content\psd\dat2.psd" />
+    <Content Include="Content\psd\db2.psd" />
+    <Content Include="Content\psd\dbf2.psd" />
+    <Content Include="Content\psd\dds2.psd" />
+    <Content Include="Content\psd\dem2.psd" />
+    <Content Include="Content\psd\dll2.psd" />
+    <Content Include="Content\psd\dmg3.psd" />
+    <Content Include="Content\psd\dmp2.psd" />
+    <Content Include="Content\psd\doc2.psd" />
+    <Content Include="Content\psd\docx.psd" />
+    <Content Include="Content\psd\drv1.psd" />
+    <Content Include="Content\psd\dtd2.psd" />
+    <Content Include="Content\psd\dwg2.psd" />
+    <Content Include="Content\psd\dxf1.psd" />
+    <Content Include="Content\psd\elf2.psd" />
+    <Content Include="Content\psd\eps2.psd" />
+    <Content Include="Content\psd\eps5.psd" />
+    <Content Include="Content\psd\exe3.psd" />
+    <Content Include="Content\psd\fla2.psd" />
+    <Content Include="Content\psd\flash10.psd" />
+    <Content Include="Content\psd\flv.psd" />
+    <Content Include="Content\psd\fnt.psd" />
+    <Content Include="Content\psd\fon1.psd" />
+    <Content Include="Content\psd\gam2.psd" />
+    <Content Include="Content\psd\gbr1.psd" />
+    <Content Include="Content\psd\ged2.psd" />
+    <Content Include="Content\psd\gif3.psd" />
+    <Content Include="Content\psd\gpx1.psd" />
+    <Content Include="Content\psd\gz.psd" />
+    <Content Include="Content\psd\gzip2.psd" />
+    <Content Include="Content\psd\hqz.psd" />
+    <Content Include="Content\psd\html9.psd" />
+    <Content Include="Content\psd\ibooks1.psd" />
+    <Content Include="Content\psd\icns.psd" />
+    <Content Include="Content\psd\ico2.psd" />
+    <Content Include="Content\psd\ics2.psd" />
+    <Content Include="Content\psd\iff.psd" />
+    <Content Include="Content\psd\indd2.psd" />
+    <Content Include="Content\psd\iso1.psd" />
+    <Content Include="Content\psd\iso4.psd" />
+    <Content Include="Content\psd\jar8.psd" />
+    <Content Include="Content\psd\jpg3.psd" />
+    <Content Include="Content\psd\js2.psd" />
+    <Content Include="Content\psd\jsp2.psd" />
+    <Content Include="Content\psd\key35.psd" />
+    <Content Include="Content\psd\kml1.psd" />
+    <Content Include="Content\psd\kmz.psd" />
+    <Content Include="Content\psd\lnk2.psd" />
+    <Content Include="Content\psd\log2.psd" />
+    <Content Include="Content\psd\lua.psd" />
+    <Content Include="Content\psd\m3u.psd" />
+    <Content Include="Content\psd\m4a1.psd" />
+    <Content Include="Content\psd\m4v2.psd" />
+    <Content Include="Content\psd\macho.psd" />
+    <Content Include="Content\psd\max2.psd" />
+    <Content Include="Content\psd\mdb2.psd" />
+    <Content Include="Content\psd\mdf2.psd" />
+    <Content Include="Content\psd\mid.psd" />
+    <Content Include="Content\psd\mim.psd" />
+    <Content Include="Content\psd\mov2.psd" />
+    <Content Include="Content\psd\mp36.psd" />
+    <Content Include="Content\psd\mp4.psd" />
+    <Content Include="Content\psd\mpa.psd" />
+    <Content Include="Content\psd\mpg3.psd" />
+    <Content Include="Content\psd\msg2.psd" />
+    <Content Include="Content\psd\msi2.psd" />
+    <Content Include="Content\psd\nes1.psd" />
+    <Content Include="Content\psd\object4.psd" />
+    <Content Include="Content\psd\odb2.psd" />
+    <Content Include="Content\psd\odc2.psd" />
+    <Content Include="Content\psd\odf2.psd" />
+    <Content Include="Content\psd\odg.psd" />
+    <Content Include="Content\psd\odi2.psd" />
+    <Content Include="Content\psd\odp2.psd" />
+    <Content Include="Content\psd\ods2.psd" />
+    <Content Include="Content\psd\odt.psd" />
+    <Content Include="Content\psd\odt5.psd" />
+    <Content Include="Content\psd\odx.psd" />
+    <Content Include="Content\psd\ogg.psd" />
+    <Content Include="Content\psd\otf.psd" />
+    <Content Include="Content\psd\otf1.psd" />
+    <Content Include="Content\psd\pages4.psd" />
+    <Content Include="Content\psd\pct2.psd" />
+    <Content Include="Content\psd\pdb2.psd" />
+    <Content Include="Content\psd\pdf19.psd" />
+    <Content Include="Content\psd\pif2.psd" />
+    <Content Include="Content\psd\pkg2.psd" />
+    <Content Include="Content\psd\pl2.psd" />
+    <Content Include="Content\psd\png3.psd" />
+    <Content Include="Content\psd\pps2.psd" />
+    <Content Include="Content\psd\ppt.psd" />
+    <Content Include="Content\psd\pptx2.psd" />
+    <Content Include="Content\psd\ps.psd" />
+    <Content Include="Content\psd\psd3.psd" />
+    <Content Include="Content\psd\pub2.psd" />
+    <Content Include="Content\psd\python3.psd" />
+    <Content Include="Content\psd\ra.psd" />
+    <Content Include="Content\psd\rar2.psd" />
+    <Content Include="Content\psd\raw2.psd" />
+    <Content Include="Content\psd\rm.psd" />
+    <Content Include="Content\psd\rom2.psd" />
+    <Content Include="Content\psd\rpm2.psd" />
+    <Content Include="Content\psd\rss29.psd" />
+    <Content Include="Content\psd\rtf.psd" />
+    <Content Include="Content\psd\sav.psd" />
+    <Content Include="Content\psd\sdf.psd" />
+    <Content Include="Content\psd\sitx2.psd" />
+    <Content Include="Content\psd\sql3.psd" />
+    <Content Include="Content\psd\sql5.psd" />
+    <Content Include="Content\psd\srt.psd" />
+    <Content Include="Content\psd\svg1.psd" />
+    <Content Include="Content\psd\swf1.psd" />
+    <Content Include="Content\psd\sys.psd" />
+    <Content Include="Content\psd\tar1.psd" />
+    <Content Include="Content\psd\tex.psd" />
+    <Content Include="Content\psd\tga2.psd" />
+    <Content Include="Content\psd\thm1.psd" />
+    <Content Include="Content\psd\tiff1.psd" />
+    <Content Include="Content\psd\tmp.psd" />
+    <Content Include="Content\psd\torrent.psd" />
+    <Content Include="Content\psd\ttf2.psd" />
+    <Content Include="Content\psd\txt2.psd" />
+    <Content Include="Content\psd\uue2.psd" />
+    <Content Include="Content\psd\vb.psd" />
+    <Content Include="Content\psd\vcd2.psd" />
+    <Content Include="Content\psd\vcf2.psd" />
+    <Content Include="Content\psd\vob.psd" />
+    <Content Include="Content\psd\wav2.psd" />
+    <Content Include="Content\psd\wma1.psd" />
+    <Content Include="Content\psd\wmv2.psd" />
+    <Content Include="Content\psd\wpd2.psd" />
+    <Content Include="Content\psd\wps.psd" />
+    <Content Include="Content\psd\wsf2.psd" />
+    <Content Include="Content\psd\xhtml.psd" />
+    <Content Include="Content\psd\xlr2.psd" />
+    <Content Include="Content\psd\xls1.psd" />
+    <Content Include="Content\psd\xlsx.psd" />
+    <Content Include="Content\psd\xml5.psd" />
+    <Content Include="Content\psd\yuv2.psd" />
+    <Content Include="Content\psd\zip6.psd" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Image\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60931</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/FileTypeImageService</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
